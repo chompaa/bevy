@@ -493,17 +493,12 @@ mod rendering_mask_tests {
             "layer 0 + 1 - 0 is mask 2"
         );
         assert_eq!(
-            RenderLayers::from_iter((0..=63).into_iter().map(|_| 0))
-                .add(1)
-                .layers[0],
+            RenderLayers::from_layers(&[0; 64]).add(1).layers[0],
             3,
             "layer (64 * 0) + 1 is mask 3"
         );
         assert_eq!(
-            RenderLayers::from_iter((0..=63).into_iter().map(|_| 0))
-                .add(1)
-                .remove(0)
-                .layers[0],
+            RenderLayers::from_layers(&[0; 64]).add(1).remove(0).layers[0],
             2,
             "layer (64 * 0) + 1 - 0 is mask 2"
         );
